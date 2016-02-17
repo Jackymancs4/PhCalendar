@@ -3,6 +3,8 @@
     <head>
         <title>PhCalendar</title>
 
+        <script src="{{ asset('js/lib/jquery-2.2.0.min.js') }}"></script>
+
         @include('layouts.bootstrap')
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
