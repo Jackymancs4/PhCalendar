@@ -12,17 +12,17 @@ class WeekClass
 
     public $nweek;
 
-    function __construct($year, $month, $day) {
+    function __construct($year, $month, $day, $month_out=false, $year_out=false) {
 
         $this->year=$year;
         $this->month=$month;
         $this->day=$day;
 
-        $this->weekBuild($year, $month, $day, $out=false);
+        $this->weekBuild($year, $month, $day, $month_out, $year_out);
 
     }
 
-    public function weekBuild ($year, $month, $day, $out=false) {
+    public function weekBuild ($year, $month, $day, $month_out=false, $year_out=false) {
 
         $DC=new DayClass($year, $month, $day);
 
@@ -36,27 +36,37 @@ class WeekClass
         $this->nweek=date("W", mktime(0,0,0,$DC->month,$DC->day,$DC->year));
 
         for($i=1; $i<8; $i++) {
+
+            if ($month_out==true || $month!=$DC->month) {
+                //echo (int)$month_out."a";
+                $DC->out="month";
+            }
+
+            if ($year_out==true || $year!=$DC->year) {
+                $DC->out="year";
+            }
+
             $this->days[$i]=$DC;
             $DC=$DC->getNext();
         }
 
     }
 
-    public function getPrev() {
+    public function getPrev($month_out=false, $year_out=false) {
 
         $firstDay= new DayClass($this->days[1]->year, $this->days[1]->month, $this->days[1]->day);
         $prev=$firstDay->DT->sub(new \DateInterval('P7D'));
 
-        return new WeekClass ($prev->format('Y'), (int)$prev->format('m'), (int)$prev->format('d'));
+        return new WeekClass ($prev->format('Y'), (int)$prev->format('m'), (int)$prev->format('d'), $month_out, $year_out);
 
     }
 
-    public function getNext() {
+    public function getNext($month_out=false, $year_out=false) {
 
         $firstDay= new DayClass($this->days[1]->year, $this->days[1]->month, $this->days[1]->day);
         $prev=$firstDay->DT->add(new \DateInterval('P7D'));
 
-        return new WeekClass ($prev->format('Y'), (int)$prev->format('m'), (int)$prev->format('d'));
+        return new WeekClass ($prev->format('Y'), (int)$prev->format('m'), (int)$prev->format('d'), $month_out, $year_out);
 
     }
 

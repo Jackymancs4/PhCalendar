@@ -35,4 +35,12 @@ class CalendarController extends Controller
         return view("date.dayView", ["day"=> $DC, "prevday" => $DC->getPrev(), "nextday" => $DC->getNext()]);
     }
 
+    public function todayView() {
+
+        $WC = new Calendar\WeekClass(date('Y'), (int)date('m'), (int)date('d'));
+        return view("date.weekView", ["week"=> $WC, "prevweek" => $WC->getPrev(), "nextweek" => $WC->getNext()]);
+
+    }
+
+
 }

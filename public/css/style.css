@@ -62,3 +62,13 @@ table {
     margin: 0 30px;
     border-top: 0px;
 }
+
+.footerbar nav {
+    border-radius: 4px 4px 0px 0px;
+    border-bottom: 0px;
+    margin: 50px 0 0 0;
+}
+
+.footerbar nav li{
+    text-align: center;
+}

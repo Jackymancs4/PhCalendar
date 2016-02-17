@@ -42,6 +42,31 @@
 
             @yield('utilbar')           
             @yield('content')
+
+            <div class="row footerbar">
+                <div class="col-md-12">
+
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <ul class="nav nav-justified">
+                                <li>        
+                                    <h3>AAA</h3>
+                                </li> 
+                                <li>        
+                                    <h3>AAA</h3>
+                                </li> 
+                                <li>        
+                                    <h3>AAA</h3>
+                                </li> 
+                                <li>        
+                                    <h3>AAA</h3>
+                                </li>                      
+                            </ul>
+                      </div>
+                    </nav>
+                </div>
+            </div>
+
         </div>
     </body>
 </html>

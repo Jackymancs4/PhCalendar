@@ -44,7 +44,7 @@
                 <tr>
                     <td class="week_index">{{ $week->nweek }}</td>
                 @foreach ($week->days as $day)
-                    <td>
+                    <td class="{{ $day->out }}-out">
                         <a href="{{ action('CalendarController@weekView', ['year' => $day->year, 'month' => $day->month, 'day' => $day->day]) }}">
                             {{ $day->day }}
                         </a>

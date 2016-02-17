@@ -11,16 +11,18 @@ class DayClass
 
     public $DT;
 
-    public $in_month;
-    public $in_year;
+    public $out_month=false;
+    public $out_year=false;
 
-     function __construct($year, $month, $day) {
+    public $out="not";
+
+    function __construct($year, $month, $day) {
        
-     	  $this->year=$year;
-    		$this->month=$month;
-    		$this->day=$day;
+     	$this->year=$year;
+    	$this->month=$month;
+    	$this->day=$day;
 
-    		$this->DT = new \DateTime();
+    	$this->DT = new \DateTime();
         $this->DT->setDate($year, $month, $day);
 
    	}

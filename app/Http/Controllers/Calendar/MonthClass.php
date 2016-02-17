@@ -21,17 +21,22 @@ class MonthClass
 
    	public function monthBuild ($year, $month) {
 
-        $day=1;
-		$WC=new WeekClass($year, $month, $day);
+    		$WC=new WeekClass($year, $month, 1);
 
-		for ($i=1; $i<=6; $i++) {
+    		for ($i=1; $i<=6; $i++) {
 
-			$this->weeks[$i]=$WC;
-			$WC=$WC->getNext();
+    			$this->weeks[$i]=$WC;
+    			$WC=$WC->getNext();
 
-		}
+          if($WC->days[1]->year!=$year) {
+            $WC = new WeekClass($WC->days[1]->year, $WC->days[1]->month, $WC->days[1]->day, true, true);
+          } elseif($WC->days[1]->month!=$month) {
+            $WC = new WeekClass($WC->days[1]->year, $WC->days[1]->month, $WC->days[1]->day, true);
+          }
 
-	}
+    		}
+
+	  }
 
 	public function getPrev() {
 

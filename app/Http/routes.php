@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +28,8 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
    
-	Route::get('date', function () {
-	    return view('welcome');
-	});
+	Route::get('/', 'CalendarController@todayView');
+	Route::get('date', 'CalendarController@todayView');
 
 	Route::get('date/{year}', 'CalendarController@yearView');
 

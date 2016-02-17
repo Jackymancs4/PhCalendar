@@ -6,13 +6,13 @@
                 <div class="container-fluid">
                     <ul class="nav navbar-nav">
                         <li>        
-                            <h4>Home</h3>
+                            <h4><a href="{{ asset('') }}">Home</a></h4>
                         </li>    
                         <li>        
-                            <h4>-</h3>
+                            <h4>-</h4>
                         </li>     
                        <li>        
-                            <h4><a href="{{ action('CalendarController@yearView', ['year' => $item->year]) }}">{{ trans('calendar/interface.year') }}</a></h3>
+                            <h4><a href="{{ action('CalendarController@yearView', ['year' => $item->year]) }}">{{ trans('calendar/interface.year') }}</a></h4>
                         </li>
                         <li>        
                             <h4>@if (isset($item->month))

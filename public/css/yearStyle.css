@@ -22,6 +22,10 @@ td, th {
     border-right: 1px solid #ddd;
 }
 
-.day_out {
-    color: #ddd;
-            }
+.month-out {
+    color: #ccc;
+}
+
+.year-out {
+    color: #eee;
+}
