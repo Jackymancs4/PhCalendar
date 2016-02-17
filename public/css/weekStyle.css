@@ -1,0 +1,30 @@
+table {
+    float: left;
+    width: 100%;
+    border-spacing: 0px;
+}
+
+th  {
+    border: 0px solid #eee;
+    border-width: 0px 1px 0px 0px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+
+td {
+    padding: 15px 75px;
+    height: 500px;
+    border: 0px solid #eee;
+    border-width: 0px 1px 0px 0px;
+    vertical-align: top;
+}
+
+td, th {
+    text-align: center;
+}
+
+.week_index {
+    font-size: 10px;
+    border-right: 1px solid #ddd;
+}

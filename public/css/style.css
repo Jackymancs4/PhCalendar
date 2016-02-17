@@ -1,0 +1,64 @@
+ html, body {
+                height: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: table;
+    font-weight: 100;
+    font-family: 'Lato';
+}
+
+table {
+    table-layout: fixed;
+}
+
+.container {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.content {
+    text-align: center;
+    display: inline-block;
+}
+
+.title {
+    font-size: 96px;
+}
+
+.mainbar h3{
+    margin: 15px;
+}
+
+.mainbar nav {
+    border-radius: 0px 0px 4px 4px;
+    margin: 0px;
+    border-top: 0px;
+}
+
+.mainbar nav li{
+    text-align: center;
+}
+
+.utilbar h4{
+    margin: 15px;
+}
+
+.utilbar nav {
+    border-radius: 0px 0px 4px 4px;
+    margin: 0 30px;
+    border-top: 0px;
+}

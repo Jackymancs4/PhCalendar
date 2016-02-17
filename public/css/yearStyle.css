@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+    border-spacing: 0px;
+}
+
+th {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+}
+
+td {
+    padding: 0px;
+}
+
+td, th {
+    padding: 5px;
+    text-align: center;
+}
+
+.week_index {
+    font-size: 10px;
+    border-right: 1px solid #ddd;
+}
+
+.day_out {
+    color: #ddd;
+            }
