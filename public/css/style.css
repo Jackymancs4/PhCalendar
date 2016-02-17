@@ -72,3 +72,7 @@ table {
 .footerbar nav li{
     text-align: center;
 }
+
+.date-navigation {
+    margin: 0 0 10px 0;
+}

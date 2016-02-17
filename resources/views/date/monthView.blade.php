@@ -13,7 +13,7 @@
 @endsection
 
 @section('content')
-    <div class="row">
+    <div class="row date-navigation">
         <div class="col-md-4">
             <h1><a href="{{ action('CalendarController@monthView', ['year' => $prevmonth->year, 'month' => $prevmonth->month]) }}"> < </a></h1>
         </div>
@@ -24,7 +24,7 @@
             <h1><a href="{{ action('CalendarController@monthView', ['year' => $nextmonth->year, 'month' => $nextmonth->month]) }}"> > </a></h1>
         </div>
     </div>
-    <div class="row">
+    <div class="row date-content">
         <div class="col-md-12">
             <table>
                 <thead>

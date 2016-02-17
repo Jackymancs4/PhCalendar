@@ -17,6 +17,10 @@ td, th {
     text-align: center;
 }
 
+h2 {
+    margin: 0px 0px 10px 50px;
+}
+
 .week_index {
     font-size: 10px;
     border-right: 1px solid #ddd;

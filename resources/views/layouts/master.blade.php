@@ -50,16 +50,7 @@
                         <div class="container-fluid">
                             <ul class="nav nav-justified">
                                 <li>        
-                                    <h3>AAA</h3>
-                                </li> 
-                                <li>        
-                                    <h3>AAA</h3>
-                                </li> 
-                                <li>        
-                                    <h3>AAA</h3>
-                                </li> 
-                                <li>        
-                                    <h3>AAA</h3>
+                                    <h4>All rights reserved - © copyright 2016</h4>
                                 </li>                      
                             </ul>
                       </div>
