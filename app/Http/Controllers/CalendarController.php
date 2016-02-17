@@ -10,6 +10,11 @@ use App\Http\Controllers\Controller;
 class CalendarController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('date');
+    }
+
 	public function yearView($year)
     {
         $YC=new Calendar\YearClass($year);
