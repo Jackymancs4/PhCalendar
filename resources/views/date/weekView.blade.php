@@ -30,17 +30,29 @@
                 <thead>
                     <tr>
                     @foreach ($week->days as $daynum => $day)
-                        <th>{{ trans('calendar/shortDays.'.$daynum) }}</th>
+                        <th>
+                            <a href="{{ action('CalendarController@dayView', ['year' => $day->year, 'month' => $day->month, 'day' => $day->day]) }}">
+                            {{ trans('calendar/shortDays.'.$daynum) }} {{ $day->day }}
+                            </a>
+                        </th>
                     @endforeach
                     </tr>
                 </thead>
                 <tr>
                 @foreach ($week->days as $day)
                     <td>
-                        <a href="{{ action('CalendarController@dayView', ['year' => $day->year, 'month' => $day->month, 'day' => $day->day]) }}">{{ $day->day }}</a>
+                        @foreach ($day->hours as $hour)
+                            @foreach ($hour->quarters as $quarter)
+                                <div class="quarter-{{ $quarter->quarter }}">
+                                @if ($quarter->quarter == 1)
+                                    {{ $hour->hour }}:00
+                                @endif
+                                </div>
+                            @endforeach
+                        @endforeach
                     </td>
                 @endforeach
-                </tr>    
+                </tr>
             </table>
         </div>
     </div>

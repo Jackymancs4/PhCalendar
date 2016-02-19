@@ -27,9 +27,22 @@
     <div class="row">
         <div class="col-md-12">
             <table>
-                @for ($i = 1; $i <= 24; $i++)
-                    <tr><td>{{$i}}</td></tr>
-                @endfor
+            @foreach ($day->hours as $hour)
+                @foreach ($hour->quarters as $quarter)
+                    <tr>
+                        <td>
+                            <div class="quarter-{{ $quarter->quarter }}">
+                            @if ($quarter->quarter == 1)
+                                <b>{{ $hour->hour }}:00</b>
+                            @else
+                                {{ $hour->hour }}:{{ ($quarter->quarter -1)*15 }}
+                            @endif
+
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+            @endforeach
             </table>
         </div>
     </div>

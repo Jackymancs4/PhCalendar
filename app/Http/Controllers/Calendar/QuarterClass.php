@@ -9,7 +9,7 @@ class QuarterClass
     public $month;
     public $day;
     public $hour;
-
+    public $quarter;
 
     function __construct($year, $month, $day, $hour, $quarter) {
        
@@ -18,5 +18,7 @@ class QuarterClass
     	$this->day=$day;
         $this->hour=$hour;
         $this->quarter=$quarter;
+
+    }
 
 }

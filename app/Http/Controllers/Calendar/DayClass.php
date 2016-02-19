@@ -16,14 +16,39 @@ class DayClass
 
     public $out="not";
 
-    function __construct($year, $month, $day) {
+    public $today=false;
+    public $hours = array();
+
+    function __construct($year=false, $month=false, $day=false) {
        
-     	$this->year=$year;
+        if ($year==false) {
+            $this->year=date('Y');
+        } else {
+            $this->year=$year;
+        }
+
+        if ($month==false) {
+            $this->month=date('m');
+        } else {
+            $this->month=$month;
+        }
+
+        if ($day==false) {
+            $this->day=date('d');
+        } else {
+            $this->day=$day;
+        }
+
+        $this->year=$year;
     	$this->month=$month;
     	$this->day=$day;
 
     	$this->DT = new \DateTime();
-        $this->DT->setDate($year, $month, $day);
+        $this->DT->setDate($this->year, $this->month, $this->day);
+
+        for ($i=1; $i<=24; $i++) {
+            $this->hours[$i]= new HourClass($this->year, $this->month, $this->day, $i);
+        }
 
    	}
 

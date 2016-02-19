@@ -1,7 +1,10 @@
 table {
     border-spacing: 0px;
     width: 100%;
-    margin: 20px 0;
+    margin: 20px auto;
+    max-width: 750px;
+    border-top: 2px solid #eee;
+    border-bottom: 2px solid #eee;
 }
 
 th  {

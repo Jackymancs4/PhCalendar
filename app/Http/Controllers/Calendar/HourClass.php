@@ -10,6 +10,7 @@ class HourClass
     public $day;
     public $hour;
 
+    public $quarters = array();
 
     function __construct($year, $month, $day, $hour) {
        
@@ -18,5 +19,9 @@ class HourClass
     	$this->day=$day;
         $this->hour=$hour;
 
+        for ($i=1; $i<=4; $i++) {
+            $this->quarters[$i]= new QuarterClass($this->year, $this->month, $this->day, $this->day, $i);
+        }
+	}
 
 }
