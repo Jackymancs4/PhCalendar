@@ -42,7 +42,8 @@
             </div>
 
 
-            @yield('utilbar')           
+            @yield('utilbar')
+            @yield('navbar')           
             @yield('content')
 
             <div class="row footerbar">

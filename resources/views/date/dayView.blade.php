@@ -7,24 +7,23 @@
 
 @section('utilbar')
 
-    @include('date.dateBarView', ["item"=>$day])
-    @yield('databar')
+    @include('date.partial.dateBarView', ["item"=>$day])
+    @yield('dateutilbar')
 
 @endsection
 
+@section('navbar')
+
+    @include('date.partial.dateNavView', [  "name"=> trans('calendar/shortDays.'.$day->getWeekNumber())." ".$day->day,
+                                            "link"=> action('CalendarController@dayView', ['year' => $day->year, 'month' => $day->month, 'day' => $day->day]),
+                                            "prelink"=> action('CalendarController@dayView', ['year' => $prevday->year, 'month' => $prevday->month, 'day' => $prevday->day]),
+                                            "nextlink"=> action('CalendarController@dayView', ['year' => $nextday->year, 'month' => $nextday->month, 'day' => $nextday->day])
+                                        ])
+    @yield('datenavbar')
+
+@endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-md-4">
-            <h1><a href="{{ action('CalendarController@dayView', ['year' => $prevday->year, 'month' => $prevday->month, 'day' => $prevday->day]) }}"> < </a></h1>
-        </div>
-        <div class="col-md-4">
-            <h1><a href="{{ action('CalendarController@dayView', ['year' => $day->year, 'month' => $day->month, 'day' => $day->day]) }}">{{ trans('calendar/shortDays.'.$day->getWeekNumber())." ".$day->day }}</a></h1>
-        </div>
-        <div class="col-md-4">
-            <h1><a href="{{ action('CalendarController@dayView', ['year' => $nextday->year, 'month' => $nextday->month, 'day' => $nextday->day]) }}"> > </a></h1>
-        </div>
-    </div>
     <div class="row">
         <div class="col-md-12">
             <table>

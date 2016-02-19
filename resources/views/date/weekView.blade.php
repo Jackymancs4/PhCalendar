@@ -7,23 +7,23 @@
 
 @section('utilbar')
 
-    @include('date.dateBarView', ["item"=>$week])
-    @yield('databar')
+    @include('date.partial.dateBarView', ["item"=>$week])
+    @yield('dateutilbar')
+
+@endsection
+
+@section('navbar')
+
+    @include('date.partial.dateNavView', [  "name"=> $week->nweek,
+                                            "link"=> action('CalendarController@weekView', ['year' => $week->year, 'month' => $week->month, 'day' => $week->days[1]->day]),
+                                            "prelink"=> action('CalendarController@weekView', ['year' => $prevweek->days[1]->year, 'month' => $prevweek->days[1]->month, 'day' => $prevweek->days[1]->day]),
+                                            "nextlink"=> action('CalendarController@weekView', ['year' => $nextweek->days[1]->year, 'month' => $nextweek->days[1]->month, 'day' => $nextweek->days[1]->day])
+                                        ])
+    @yield('datenavbar')
 
 @endsection
 
 @section('content')
-    <div class="row date-navigation">
-        <div class="col-md-4">
-            <h1><a href="{{ action('CalendarController@weekView', ['year' => $prevweek->year, 'month' => $prevweek->month, 'day' => $prevweek->days[1]->day]) }}"> < </a></h1>
-        </div>
-        <div class="col-md-4">
-            <h1><a href="{{ action('CalendarController@weekView', ['year' => $week->year, 'month' => $week->month, 'day' => $week->days[1]->day]) }}">{{ $week->nweek }}</a></h1>
-        </div>
-        <div class="col-md-4">
-            <h1><a href="{{ action('CalendarController@weekView', ['year' => $nextweek->year, 'month' => $nextweek->month, 'day' => $nextweek->days[1]->day]) }}"> > </a></h1>
-        </div>
-    </div>
     <div class="row date-content">
         <div class="col-md-12">
             <table>
@@ -37,7 +37,7 @@
                 <tr>
                 @foreach ($week->days as $day)
                     <td>
-                        <a href="{{ action('CalendarController@dayView', ['year' => $week->year, 'month' => $week->month, 'day' => $day->day]) }}">{{ $day->day }}</a>
+                        <a href="{{ action('CalendarController@dayView', ['year' => $day->year, 'month' => $day->month, 'day' => $day->day]) }}">{{ $day->day }}</a>
                     </td>
                 @endforeach
                 </tr>    

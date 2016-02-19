@@ -6,23 +6,23 @@
 
 @section('utilbar')
 
-    @include('date.dateBarView', ["item"=>$year])
-    @yield('databar')
+    @include('date.partial.dateBarView', ["item"=>$year])
+    @yield('dateutilbar')
+
+@endsection
+
+@section('navbar')
+
+    @include('date.partial.dateNavView', [  "name"=> $year->year,
+                                            "link"=> action('CalendarController@yearView', ['year' => $year->year]),
+                                            "prelink"=> action('CalendarController@yearView', ['year' => $prevyear->year]),
+                                            "nextlink"=> action('CalendarController@yearView', ['year' => $nextyear->year])
+                                        ])
+    @yield('datenavbar')
 
 @endsection
 
 @section('content')
-    <div class="row date-navigation">
-        <div class="col-md-4">
-            <h1><a href="{{ action('CalendarController@yearView', ['year' => $prevyear->year]) }}"> < </a></h1>
-        </div>
-        <div class="col-md-4">
-            <h1><a href="{{ action('CalendarController@yearView', ['year' => $year->year]) }}">{{ $year->year }}</a></h1>
-        </div>
-        <div class="col-md-4">
-            <h1><a href="{{ action('CalendarController@yearView', ['year' => $nextyear->year]) }}"> > </a></h1>
-        </div>
-    </div>
     <div class="row date-content">
     @foreach ($year->months as $month)
         <div class="col-md-4">

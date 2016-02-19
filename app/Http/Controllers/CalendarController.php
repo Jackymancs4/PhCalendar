@@ -31,7 +31,7 @@ class CalendarController extends Controller
     public function weekView($year, $month, $day)
     {
         $WC = new Calendar\WeekClass($year, $month, $day);
-    	return view("date.weekView", ["week"=> $WC, "prevweek" => $WC->getPrev(), "nextweek" => $WC->getNext()]);
+    	return view("date.weekView", ["week"=> $WC, "prevweek" => $WC, "nextweek" => $WC]);
     }
 
     public function dayView($year, $month, $day)
