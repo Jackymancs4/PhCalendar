@@ -21,22 +21,14 @@ class DayClass
 
     function __construct($year=false, $month=false, $day=false) {
        
-        if ($year==false) {
-            $this->year=date('Y');
-        } else {
-            $this->year=$year;
+        if($year==false || $month==false || $day==false) {
+            $year=date('Y');
+            $month=date('m');
+            $day=date('d');
         }
 
-        if ($month==false) {
-            $this->month=date('m');
-        } else {
-            $this->month=$month;
-        }
-
-        if ($day==false) {
-            $this->day=date('d');
-        } else {
-            $this->day=$day;
+        if($year==date('Y') && $month==date('m') && $day==date('d')) {
+            $this->today=true;
         }
 
         $this->year=$year;

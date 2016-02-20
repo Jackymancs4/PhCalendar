@@ -33,3 +33,7 @@ h2 {
 .year-out {
     color: #eee;
 }
+
+.today {
+    color: red;
+}
