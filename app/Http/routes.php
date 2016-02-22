@@ -32,11 +32,18 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('date', 'CalendarController@todayView');
 
 	Route::get('date/{year}', 'CalendarController@yearView');
-
 	Route::get('date/{year}/{month}', 'CalendarController@monthView');
-
 	Route::get('date/{year}/{month}/{day}', 'CalendarController@weekView');
-
 	Route::get('date/{year}/{month}/{day}/day', 'CalendarController@dayView');
+
+	Route::get('event', 'EventController@listView');
+
+	Route::get('event/list', 'EventController@listView');
+	Route::get('event/create', 'EventController@createView');
+	Route::get('event/get/{id}', 'EventController@getView');
+	Route::post('event/store', 'EventController@store');
+
+	//Route::delete('event/delete/{id}', 'EventController@delete');
+
 
 });

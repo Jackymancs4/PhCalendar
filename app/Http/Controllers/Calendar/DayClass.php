@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Calendar;
 
+use App\Repositories\EventRepository;
+
 
 class DayClass 
 {
@@ -18,6 +20,8 @@ class DayClass
 
     public $today=false;
     public $hours = array();
+
+    public $events;
 
     function __construct($year=false, $month=false, $day=false) {
        
@@ -42,6 +46,9 @@ class DayClass
             $this->hours[$i]= new HourClass($this->year, $this->month, $this->day, $i);
         }
 
+        $events = new EventRepository();
+        $this->events=$events->findEventForDay($this->year.'-'.$this->month.'-'.$this->day);
+
    	}
 
    	public function getPrev() {
@@ -65,5 +72,7 @@ class DayClass
     public function getWeekNumber () {
         return date("N", mktime(0,0,0, $this->month, $this->day, $this->year));
     }
+
+
 
 }

@@ -24,16 +24,28 @@
                         <div class="container-fluid">
                             <ul class="nav nav-justified">
                                 <li>        
-                                    <h3>AAA</h3>
+                                    <h3>DashBoard</h3>
                                 </li> 
                                 <li>        
-                                    <h3>AAA</h3>
+                                    <h3>Wallet</h3>
                                 </li> 
                                 <li>        
-                                    <h3>AAA</h3>
+                                    <h3>Maps</h3>
                                 </li> 
                                 <li>        
-                                    <h3>AAA</h3>
+                                    <h3>Times</h3>
+                                </li>
+                                <li>        
+                                    <h3>Note</h3>
+                                </li>
+                                <li>        
+                                    <h3>TODO</h3>
+                                </li>
+                                <li>        
+                                    <h3><a href="{{ asset('') }}event">Event</a></h3>
+                                </li>
+                                <li>        
+                                    <h3><a href="{{ asset('') }}date">Date</a></h3>
                                 </li>                      
                             </ul>
                       </div>

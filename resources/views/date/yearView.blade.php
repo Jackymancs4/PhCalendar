@@ -55,7 +55,7 @@
                         @else
                         <div>
                             <a href="{{ action('CalendarController@weekView', ['year' => $day->year, 'month' => $day->month, 'day' => $day->day]) }}">
-                                {{ $day->day }}
+                                {{ $day->day }} {{ $day->events->count() }}
                             </a>
                         </div>
                         @endif
