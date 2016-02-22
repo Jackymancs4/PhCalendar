@@ -5,6 +5,23 @@
 @endpush
 
 @push('script')
+<script src="{{ asset('js/lib/moment-with-locales.js') }}"></script>
+<script src="{{ asset('js/lib/bootstrap-datetimepicker.min.js') }}"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+        $('#datetimepicker2').datetimepicker({
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#datetimepicker1").on("dp.change", function (e) {
+            $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker2").on("dp.change", function (e) {
+            $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+</script>
 @endpush
 
 @section('utilbar')
@@ -30,7 +47,7 @@
                 <label class="col-sm-3 control-label">Title</label>
 
                 <div class="col-sm-6">
-                    <input type="text" name="title" id="event-title" class="form-control" value="Name.">
+                    <input type="text" name="title" class="form-control" value="Name.">
                 </div>
             </div>
             <div class="form-group">
@@ -44,7 +61,7 @@
                 <label class="col-sm-3 control-label">Start date</label>
 
                 <div class="col-sm-3">
-                    <input type="text" name="start_date" id="event-title" class="form-control">
+                    <input type="text" name="start_date" id='datetimepicker1' class="form-control">
                 </div>
                 <label class="col-sm-1 control-label">Start time</label>
 
@@ -56,7 +73,7 @@
                 <label class="col-sm-3 control-label">End date</label>
 
                 <div class="col-sm-3">
-                    <input type="text" name="end_date" id="event-title" class="form-control">
+                    <input type="text" name="end_date" id='datetimepicker2' class="form-control">
                 </div>
                 <label class="col-sm-1 control-label">End time</label>
 
