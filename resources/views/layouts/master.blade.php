@@ -39,13 +39,13 @@
                                     <h3>Note</h3>
                                 </li>
                                 <li>        
-                                    <h3>TODO</h3>
+                                    <h3><a href="{{ url('/todo') }}">TODO</a></h3>
                                 </li>
                                 <li>        
-                                    <h3><a href="{{ asset('') }}event">Event</a></h3>
+                                    <h3><a href="{{ url('/event') }}">Event</a></h3>
                                 </li>
                                 <li>        
-                                    <h3><a href="{{ asset('') }}date">Date</a></h3>
+                                    <h3><a href="{{ url('/date') }}">Date</a></h3>
                                 </li>                      
                             </ul>
                       </div>

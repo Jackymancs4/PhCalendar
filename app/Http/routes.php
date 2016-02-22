@@ -42,8 +42,28 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('event/create', 'EventController@createView');
 	Route::get('event/get/{id}', 'EventController@getView');
 	Route::post('event/store', 'EventController@store');
-
 	//Route::delete('event/delete/{id}', 'EventController@delete');
+
+	Route::get('todo', 'TodoController@createPoolView');
+
+	Route::get('todo/pool', 'TodoController@createPoolView');
+	//Route::get('todo/pool/list', 'TodoController@createPoolView');
+	Route::get('todo/pool/create', 'TodoController@createPoolView');
+	//Route::get('todo/pool/get/{id}', 'TodoController@createPoolView');
+	//Route::post('todo/pool/store', 'EventController@store');
+	//Route::delete('todo/pool/delete/{id}', 'EventController@delete');
+
+	//Route::get('todo/poolwindow/list', 'TodoController@createPoolView');
+	Route::get('todo/poolwindow/create', 'TodoController@createPoolWindowView');
+	//Route::get('todo/poolwindow/get/{id}', 'TodoController@createPoolView');
+	//Route::post('todo/poolwindow/store', 'EventController@store');
+	//Route::delete('todo/poolwindow/delete/{id}', 'EventController@delete');
+
+	//Route::get('todo/list', 'TodoController@createPoolView');
+	//Route::get('todo/create', 'TodoController@createPoolView');
+	//Route::get('todo/get/{id}', 'TodoController@createPoolView');
+	//Route::post('todo/store', 'EventController@store');
+	//Route::delete('todo/delete/{id}', 'EventController@delete');
 
 
 });
