@@ -24,7 +24,7 @@ class EventRepository
 
     public function findEventForDay($dayString)
     {
-        return Event::where('start_date','<=',$dayString)->where('end_date','>=',$dayString);
+        return Event::where('start_date','<=',$dayString)->where('end_date','>=',$dayString)->get();
     }
 
 }

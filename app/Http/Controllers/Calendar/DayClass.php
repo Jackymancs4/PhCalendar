@@ -21,8 +21,6 @@ class DayClass
     public $today=false;
     public $hours = array();
 
-    public $events;
-
     function __construct($year=false, $month=false, $day=false) {
        
         if($year==false || $month==false || $day==false) {
@@ -42,37 +40,37 @@ class DayClass
     	$this->DT = new \DateTime();
         $this->DT->setDate($this->year, $this->month, $this->day);
 
-        for ($i=1; $i<=24; $i++) {
+        for ($i=0; $i<=23; $i++) {
             $this->hours[$i]= new HourClass($this->year, $this->month, $this->day, $i);
         }
-
-        $events = new EventRepository();
-        $this->events=$events->findEventForDay($this->year.'-'.$this->month.'-'.$this->day);
 
    	}
 
    	public function getPrev() {
 
         $newday = new DayClass($this->year, $this->month, $this->day);
-     		$prev=$newday->DT->sub(new \DateInterval('P1D'));
+     	$prev=$newday->DT->sub(new \DateInterval('P1D'));
 
-     		return new DayClass ($prev->format('Y'), (int)$prev->format('m'), (int)$prev->format('d'));
+     	return new DayClass ($prev->format('Y'), (int)$prev->format('m'), (int)$prev->format('d'));
 
    	}
 
    	public function getNext() {
 
         $newday = new DayClass($this->year, $this->month, $this->day);
-     		$prev=$newday->DT->add(new \DateInterval('P1D'));
+     	$prev=$newday->DT->add(new \DateInterval('P1D'));
         
-     		return new DayClass ($prev->format('Y'), (int)$prev->format('m'), (int)$prev->format('d'));
-
-   	}
+     	return new DayClass ($prev->format('Y'), (int)$prev->format('m'), (int)$prev->format('d'));
+    }
 
     public function getWeekNumber () {
         return date("N", mktime(0,0,0, $this->month, $this->day, $this->year));
     }
 
+    public function getCountEventForType () {
 
+        $event=new EventRepository();
+        return $event->findEventForDay($this->year.'-'.$this->month.'-'.$this->day);
+    }
 
 }

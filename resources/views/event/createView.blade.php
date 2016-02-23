@@ -10,9 +10,18 @@
 
 <script type="text/javascript">
     $(function () {
-        $('#datetimepicker1').datetimepicker();
+        $('#datetimepicker1').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
         $('#datetimepicker2').datetimepicker({
-            useCurrent: false //Important! See issue #1075
+            useCurrent: false,
+            format: 'YYYY-MM-DD'
+        });
+        $('#datetimepicker3').datetimepicker({
+            format: 'HH:mm'
+        });
+        $('#datetimepicker4').datetimepicker({
+            format: 'HH:mm'
         });
         $("#datetimepicker1").on("dp.change", function (e) {
             $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
@@ -66,7 +75,7 @@
                 <label class="col-sm-1 control-label">Start time</label>
 
                 <div class="col-sm-2">
-                    <input type="text" name="start_time" id="event-title" class="form-control">
+                    <input type="text" name="start_time" id='datetimepicker3' id="event-title" class="form-control">
                 </div>
             </div>
             <div class="form-group">
@@ -78,7 +87,7 @@
                 <label class="col-sm-1 control-label">End time</label>
 
                 <div class="col-sm-2">
-                    <input type="text" name="end_time" id="event-title" class="form-control">
+                    <input type="text" name="end_time" id='datetimepicker4' id="event-title" class="form-control">
                 </div>
             </div>
             <div class="form-group">

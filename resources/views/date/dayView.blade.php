@@ -30,16 +30,29 @@
             @foreach ($day->hours as $hour)
                 @foreach ($hour->quarters as $quarter)
                     <tr>
-                        <td>
+                        <td class="quarters">
                             <div class="quarter-{{ $quarter->quarter }}">
                             @if ($quarter->quarter == 1)
                                 <b>{{ $hour->hour }}:00</b>
                             @else
                                 {{ $hour->hour }}:{{ ($quarter->quarter -1)*15 }}
                             @endif
-
                             </div>
                         </td>
+                        @if($quarter->getPoolwindow()->count()!=0)
+                            @foreach ($quarter->getPoolwindow() as $poolwindows)
+
+                                @if($quarter->dayindex==$quarter->getDayindexfromString($poolwindows->start_time))
+                                <td rowspan="{{ ($quarter->getDayindexfromString($poolwindows->end_time)-$quarter->getDayindexfromString($poolwindows->start_time)) }}">
+                                    <div class="pool">
+                                        {{ $poolwindows->pool }}
+                                    <div>
+                                </td>
+                                @endif
+                            @endforeach
+                        @else
+                            <td></td>
+                        @endif
                     </tr>
                 @endforeach
             @endforeach

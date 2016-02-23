@@ -15,7 +15,8 @@ class CreatePoolwindowsTable extends Migration
         Schema::create('poolwindows', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('pool')->unsigned();;
+            $table->integer('pool')->unsigned()->nullable();
+            $table->integer('weekday')->unsigned();
             $table->time('start_time');
             $table->time('end_time');
 

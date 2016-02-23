@@ -29,6 +29,7 @@
             <table>
                 <thead>
                     <tr>
+                        <th></th>
                     @foreach ($week->days as $daynum => $day)
                         <th>
                             <a href="{{ action('CalendarController@dayView', ['year' => $day->year, 'month' => $day->month, 'day' => $day->day]) }}">
@@ -38,21 +39,33 @@
                     @endforeach
                     </tr>
                 </thead>
-                <tr>
-                @foreach ($week->days as $day)
-                    <td>
-                        @foreach ($day->hours as $hour)
-                            @foreach ($hour->quarters as $quarter)
-                                <div class="quarter-{{ $quarter->quarter }}">
-                                @if ($quarter->quarter == 1)
-                                    {{ $hour->hour }}:00
+                
+                @foreach ($week->days[1]->hours as $nhour => $hour)
+                    @foreach ($hour->quarters as $nquarter => $quarter)
+                        <tr>
+                            <td>
+                                {{ $quarter->hour }}:{{ (($quarter->quarter-1)*15) }}
+                            </td>
+                            @foreach ($week->days as $day) 
+
+                                @if($day->hours[$nhour]->quarters[$nquarter]->getPoolwindow()->count()!=0)
+                                    @foreach ($day->hours[$nhour]->quarters[$nquarter]->getPoolwindow() as $poolwindows)
+
+                                        @if($day->hours[$nhour]->quarters[$nquarter]->dayindex==$quarter->getDayindexfromString($poolwindows->start_time))
+                                        <td rowspan="{{ ($quarter->getDayindexfromString($poolwindows->end_time)-$quarter->getDayindexfromString($poolwindows->start_time)) }}">
+                                            <div class="pool">
+                                                {{ $poolwindows->pool }}
+                                            <div>
+                                        </td>
+                                        @endif
+                                    @endforeach
+                                @else
+                                    <td></td>
                                 @endif
-                                </div>
                             @endforeach
-                        @endforeach
-                    </td>
+                        </tr>
+                    @endforeach
                 @endforeach
-                </tr>
             </table>
         </div>
     </div>

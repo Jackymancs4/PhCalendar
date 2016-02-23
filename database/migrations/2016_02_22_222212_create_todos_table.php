@@ -19,8 +19,8 @@ class CreateTodosTable extends Migration
             $table->timestamps();
             $table->integer('duration');
             $table->boolean('done')->default(false);
-            $table->integer('pool')->unsigned();;
-            $table->integer('parent')->unsigned();;
+            $table->integer('pool')->unsigned()->nullable();
+            $table->integer('parent')->unsigned()->nullable();
             $table->integer('priority')->default(5);
 
             $table->foreign('pool')->references('id')->on('pools');

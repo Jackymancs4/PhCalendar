@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Calendar;
 
+use App\Repositories\TodoRepository;
 
 class HourClass 
 {
@@ -20,8 +21,15 @@ class HourClass
         $this->hour=$hour;
 
         for ($i=1; $i<=4; $i++) {
-            $this->quarters[$i]= new QuarterClass($this->year, $this->month, $this->day, $this->day, $i);
+            $this->quarters[$i]= new QuarterClass($this->year, $this->month, $this->day, $this->hour, $i);
         }
 	}
+
+    public function getPoolwindow() {
+
+        $poolwindows = new TodoRepository();
+        return $poolwindows->getPoolwindowsforHour($this->hour.":00:00");
+
+    }
 
 }

@@ -2,7 +2,7 @@
 @extends('layouts.master')
 
 @push('style')
-<link href="{{ asset('css/dayStyle.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/todoStyle.css') }}" rel="stylesheet" type="text/css">
 @endpush
 
 @section('utilbar')
@@ -14,20 +14,23 @@
 
 @section('navbar')
 
+    @include('todo.partial.todoNavView', ["item"=>"pool"])
+    @yield('todonavbar')
+
 @endsection
 
 @section('content')
     <div class="row">
         <h1>New Pool</h1>
-        <form action="{{ url('event/store') }}" method="POST" class="form-horizontal">
+        <form action="{{ url('todo/pool/store') }}" method="POST" class="form-horizontal">
             {!! csrf_field() !!}
 
             <!-- Task Name -->
             <div class="form-group">
-                <label class="col-sm-3 control-label">Title</label>
+                <label class="col-sm-3 control-label">Name</label>
 
                 <div class="col-sm-6">
-                    <input type="text" name="title" class="form-control" value="Name.">
+                    <input type="text" name="name" class="form-control" value="Name.">
                 </div>
             </div>
             <div class="form-group">
@@ -38,10 +41,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">Repetition</label>
+                <label class="col-sm-3 control-label">Sorting</label>
 
                 <div class="col-sm-6">
-                    <select class="form-control" name="repetition">
+                    <select class="form-control" name="sorting">
                       <option>random</option>
                       <option>alphabetic</option>
                       <option>queue</option>
@@ -54,7 +57,7 @@
                 <div class="col-sm-6">
                     <div class="checkbox">
                       <label>
-                        <input type="checkbox" value="1">
+                        <input type="checkbox" name="active" value="1">
                       </label>
                     </div>
                 </div>
@@ -63,7 +66,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">
                     <button type="submit" class="btn btn-default">
-                        Add Event
+                        Add Pool
                     </button>
                 </div>
             </div>

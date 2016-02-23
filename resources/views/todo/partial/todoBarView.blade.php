@@ -12,22 +12,16 @@
                             <h4>-</h4>
                         </li>
                         <li>        
-                            <h4><a href="{{ url('/todo/pool/create') }}">Create pool</a></h4>
+                            <h4><a href="{{ url('') }}">List</a></h4>
                         </li>
                         <li>        
-                            <h4><a href="{{ url('') }}">List pool</a></h4>
+                            <h4><a href="{{ url('todo/create') }}">Create</a></h4>
                         </li>
                         <li>        
-                            <h4><a href="{{ url('todo/poolwindow/create') }}">Create pool window</a></h4>
+                            <h4><a href="{{ url('todo/pool/create') }}">Pool</a></h4>
                         </li>
                         <li>        
-                            <h4><a href="{{ url('') }}">List pool window</a></h4>
-                        </li>
-                        <li>        
-                            <h4><a href="{{ url('') }}">Create todo</a></h4>
-                        </li>
-                        <li>        
-                            <h4><a href="{{ url('') }}">List todo</a></h4>
+                            <h4><a href="{{ url('todo/poolwindow/create') }}">Pool Window</a></h4>
                         </li>                  
                     </ul>
               </div>
