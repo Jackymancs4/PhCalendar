@@ -27,6 +27,14 @@
     <div class="row">
         <div class="col-md-12">
             <table>
+            @foreach ($day->getEvents() as $event) 
+                <tr>
+                    <td>{{ $event->title }}</td>
+                    <td>{{ $event->description }}</td>
+                </tr>
+            @endforeach
+            </table>
+            <table>
             @foreach ($day->hours as $hour)
                 @foreach ($hour->quarters as $quarter)
                     <tr>
@@ -40,12 +48,12 @@
                             </div>
                         </td>
                         @if($quarter->getPoolwindow()->count()!=0)
-                            @foreach ($quarter->getPoolwindow() as $poolwindows)
+                            @foreach ($quarter->getPoolwindow() as $poolwindow)
 
-                                @if($quarter->dayindex==$quarter->getDayindexfromString($poolwindows->start_time))
-                                <td rowspan="{{ ($quarter->getDayindexfromString($poolwindows->end_time)-$quarter->getDayindexfromString($poolwindows->start_time)) }}">
+                                @if($quarter->dayindex==$quarter->getDayindexfromString($poolwindow->start_time))
+                                <td rowspan="{{ ($quarter->getDayindexfromString($poolwindow->end_time)-$quarter->getDayindexfromString($poolwindow->start_time)) }}">
                                     <div class="pool">
-                                        {{ $poolwindows->pool }}
+                                        {{ $poolwindow->poolRelation->name }}
                                     <div>
                                 </td>
                                 @endif

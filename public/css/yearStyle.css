@@ -13,7 +13,6 @@ td {
 }
 
 td, th {
-    padding: 5px;
     text-align: center;
 }
 
@@ -36,4 +35,46 @@ h2 {
 
 .today {
     color: red;
+}
+
+td>div {
+    height: 50px;
+    width: 50px;
+    padding: 5px;
+    padding-top: 15px;
+    border: 1px solid #eee;
+    border-right: 0px;
+    border-bottom: 0px; 
+}
+
+.event-signal {
+    font-size: 10px;
+    height: 15px;
+    width: 15px;
+    position: relative;
+    border-radius: 36px; 
+}
+
+.event-signal-1 {
+    background-color: #ffe6e6;
+    top: -35px;
+    left: 28px;
+}
+
+.event-signal-2 {
+    background-color: #ffffcc;
+    top: -32px;
+    left: 28px;
+}
+
+.event-signal-3 {
+    background-color: #ccffcc;
+    top: -30px;
+    left: 28px;
+}
+
+.event-signal-4 {
+    background-color: #f2f2f2;
+    top: -45px;
+    left: 10px;
 }

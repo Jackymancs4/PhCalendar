@@ -12,6 +12,14 @@ th  {
     padding-top: 8px;
 }
 
+.hour {
+    height: 25px;
+}
+
+tr {
+    height: 2px;
+}
+
 td {
     border: 0px solid #eee;
     border-width: 0px 1px 0px 0px;
@@ -22,7 +30,15 @@ td, th {
     text-align: center;
 }
 
+.hour td {
+    border-top: 1px solid #eee; 
+}
+
 .week_index {
     font-size: 10px;
     border-right: 1px solid #ddd;
+}
+
+.pool {
+    background: #fafafa;
 }

@@ -39,23 +39,43 @@
                     @endforeach
                     </tr>
                 </thead>
-                
-                @foreach ($week->days[1]->hours as $nhour => $hour)
+                <tr>
+                    <td></td>
+                @foreach ($week->days as $daynum => $day)
+                    <td>
+                        @foreach ($day->getEvents() as $event) 
+                            <div>
+                                {{ $event->title }}
+                            <div>
+                        @endforeach
+                    </th>
+                @endforeach
+                </tr>
+
+               @foreach ($week->days[1]->hours as $nhour => $hour)
                     @foreach ($hour->quarters as $nquarter => $quarter)
+                    @if($quarter->quarter==1)
+                        <tr class="hour">
+                            <td>{{ $quarter->hour }}:00</td>
+                    @else
                         <tr>
-                            <td>
-                                {{ $quarter->hour }}:{{ (($quarter->quarter-1)*15) }}
-                            </td>
+                            <td></td>
+                    @endif
                             @foreach ($week->days as $day) 
 
                                 @if($day->hours[$nhour]->quarters[$nquarter]->getPoolwindow()->count()!=0)
                                     @foreach ($day->hours[$nhour]->quarters[$nquarter]->getPoolwindow() as $poolwindows)
 
                                         @if($day->hours[$nhour]->quarters[$nquarter]->dayindex==$quarter->getDayindexfromString($poolwindows->start_time))
-                                        <td rowspan="{{ ($quarter->getDayindexfromString($poolwindows->end_time)-$quarter->getDayindexfromString($poolwindows->start_time)) }}">
-                                            <div class="pool">
-                                                {{ $poolwindows->pool }}
+                                        <td class="pool" rowspan="{{ ($quarter->getDayindexfromString($poolwindows->end_time)-$quarter->getDayindexfromString($poolwindows->start_time)) }}">
+                                            <div class="pool-title">
+                                                {{ $poolwindows->poolRelation->name }}
                                             <div>
+                                            @if(isset($list[$poolwindows->id.$day->day.$day->month.$day->year]))
+                                                @foreach($list[$poolwindows->id.$day->day.$day->month.$day->year] as $name)
+                                                    {{ $name }}
+                                                @endforeach
+                                            @endif
                                         </td>
                                         @endif
                                     @endforeach

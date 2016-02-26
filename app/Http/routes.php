@@ -59,7 +59,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('todo/poolwindow/store', 'TodoController@storePoolWindow');
 	//Route::delete('todo/poolwindow/delete/{id}', 'EventController@delete');
 
-	//Route::get('todo/list', 'TodoController@createPoolView');
+	Route::get('todo/list', 'TodoController@listView');
 	Route::get('todo/create', 'TodoController@createView');
 	//Route::get('todo/get/{id}', 'TodoController@createPoolView');
 	Route::post('todo/store', 'TodoController@store');

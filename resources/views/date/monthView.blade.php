@@ -43,6 +43,11 @@
                         <a href="{{ action('CalendarController@weekView', ['year' => $day->year, 'month' => $day->month, 'day' => $day->day]) }}">
                             {{ $day->day }}
                         </a>
+                        @foreach ($day->getEvents() as $event) 
+                            <div>
+                                {{ $event->title }}
+                            <div>
+                        @endforeach
                     </td>
                 @endforeach
                 </tr>   

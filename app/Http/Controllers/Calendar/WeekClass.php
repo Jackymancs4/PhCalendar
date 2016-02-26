@@ -12,7 +12,13 @@ class WeekClass
 
     public $nweek;
 
-    function __construct($year, $month, $day, $month_out=false, $year_out=false) {
+    function __construct($year=false, $month=false, $day=false, $month_out=false, $year_out=false) {
+
+        if($year==false || $month==false || $day==false) {
+            $year=date('Y');
+            $month=date('m');
+            $day=date('d');
+        }
 
         $this->year=$year;
         $this->month=$month;
@@ -27,9 +33,9 @@ class WeekClass
         $DC=new DayClass($year, $month, $day);
 
         //ISO-8601 numeric representation of the day of the week (1-7)
-        $actualday=date("N", mktime(0,0,0,$month, $day, $year));
+        $nactualday=$DC->ndayweek;
 
-        for($i=1; $i<$actualday; $i++) {
+        for($i=1; $i<$nactualday; $i++) {
             $DC=$DC->getPrev();
         }
 

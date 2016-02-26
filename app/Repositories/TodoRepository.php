@@ -26,6 +26,18 @@ class TodoRepository
 
     }
 
+    public function getAllPoolWindows()
+    {
+        return Poolwindow::orderBy('weekday')->orderBy('start_time')->get();
+
+    }
+
+    public function getAllTodoswithoutParent()
+    {
+        return Todo::where('parent', NULL)->get();
+
+    }
+
     public function getPoolwindowsforHour($hour, $day)
     {
         return Poolwindow::where('weekday', $day)->where('start_time','<=',$hour)->where('end_time','>',$hour)->get();

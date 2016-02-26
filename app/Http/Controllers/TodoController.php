@@ -32,6 +32,50 @@ class TodoController extends Controller
         return view("todo.createView", ["pools"=>$repo->getAllPools(), "todos"=>$repo->getAllTodos()]);
     }
 
+    public function recursiveChild($todo, &$mat, $i, $j) {
+
+        foreach ($todo->childRelation as $child) {
+            $mat[$i][$j]=$child->name;
+
+            $this->recursiveChild($child, $mat, $i, $j+1);
+            $i++;
+        }
+    }
+
+    public function listView() {
+
+        $repo=new TodoRepository();
+        $todos = $repo->getAllTodoswithoutParent();
+
+        $mat=array();
+
+        $i=0;
+        $j=0;
+        $max=0;
+
+        foreach ($todos as $todo) {
+
+            $mat[$i][$j]=$todo->name;
+            $this->recursiveChild($todo, $mat, $i, $j+1);
+
+            $i=count($mat);
+        }
+
+        for ($k=0; $k < count($mat); $k++) { 
+            if (count($mat[$k])>$max)
+                $max=count($mat[$k]);
+        }
+
+        for ($i=0; $i < count($mat); $i++) { 
+            for ($j=0; $j < $max; $j++) { 
+                if(!isset($mat[$i][$j]))
+                    $mat[$i][$j]=0;
+            }
+        }
+        
+        return view("todo.listView", ['todos'=>$mat]);
+    }
+
     public function storePool(Request $request) {
 
     	$pool= new Pool();
@@ -70,8 +114,12 @@ class TodoController extends Controller
         $todo->description=$request->description;
         $todo->priority=$request->priority;
         $todo->duration=$request->duration;
-        $todo->pool=$request->pool;
-        $todo->parent=$request->parent;
+
+        if ($request->pool!="none")
+            $todo->pool=$request->pool;
+
+        if ($request->parent!="none")
+            $todo->parent=$request->parent;
 
         $todo->save();
 

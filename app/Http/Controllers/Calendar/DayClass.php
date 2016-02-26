@@ -12,6 +12,7 @@ class DayClass
     public $day;
 
     public $DT;
+    public $ndayweek;
 
     public $out_month=false;
     public $out_year=false;
@@ -32,6 +33,8 @@ class DayClass
         if($year==date('Y') && $month==date('m') && $day==date('d')) {
             $this->today=true;
         }
+
+        $this->ndayweek=date("N", mktime(0,0,0,$month, $day, $year));
 
         $this->year=$year;
     	$this->month=$month;
@@ -67,10 +70,16 @@ class DayClass
         return date("N", mktime(0,0,0, $this->month, $this->day, $this->year));
     }
 
-    public function getCountEventForType () {
+    public function getEvents () {
 
         $event=new EventRepository();
-        return $event->findEventForDay($this->year.'-'.$this->month.'-'.$this->day);
+        return $event->findEventforDay($this->year.'-'.$this->month.'-'.$this->day);
+    }
+
+    public function getCountEventforType ($type) {
+
+        $event=new EventRepository();
+        return $event->countEventforDayforType($this->year.'-'.$this->month.'-'.$this->day, $type);
     }
 
 }

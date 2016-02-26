@@ -12,7 +12,7 @@
                             <h4>-</h4>
                         </li>
                         <li>        
-                            <h4><a href="{{ url('') }}">List</a></h4>
+                            <h4><a href="{{ url('todo/list') }}">List</a></h4>
                         </li>
                         <li>        
                             <h4><a href="{{ url('todo/create') }}">Create</a></h4>

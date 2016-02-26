@@ -54,9 +54,14 @@
                         </div>
                         @else
                         <div>
-                            <a href="{{ action('CalendarController@weekView', ['year' => $day->year, 'month' => $day->month, 'day' => $day->day]) }}">
-                                {{ $day->day }} {{ $day->getCountEventForType()->count() }}
-                            </a>
+                            <a href="{{ action('CalendarController@weekView', ['year' => $day->year, 'month' => $day->month, 'day' => $day->day]) }}">{{ $day->day }}
+@for ($i = 1; $i <= 4; $i++)
+    @if($day->getCountEventforType($i)!=0)
+                                <div class="event-signal event-signal-{{ $i }}">{{ $day->getCountEventforType($i) }}</div>
+    @else
+                                <div class="event-signal"></div>
+    @endif
+@endfor                     </a>
                         </div>
                         @endif
                     @else

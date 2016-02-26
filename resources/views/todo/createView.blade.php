@@ -68,6 +68,7 @@
 
                 <div class="col-sm-6">
                     <select class="form-control" name="pool">
+                        <option value="none" >None</option>
                         @foreach ($pools as $pool)
                             <option value="{{ $pool->id }}" >{{ $pool->name }}</option>
                         @endforeach
@@ -80,8 +81,9 @@
 
                 <div class="col-sm-6">
                     <select class="form-control" name="parent">
+                        <option value="none" >None</option>
                         @foreach ($todos as $todo)
-                            <option value="{{ $pool->id }}" >{{ $pool->name }}</option>
+                            <option value="{{ $todo->id }}" >{{ $todo->name }}</option>
                         @endforeach
                     </select>
                 </div>
