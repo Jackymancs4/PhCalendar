@@ -82,7 +82,7 @@ class CalendarController extends Controller
                         $distance=7-$actualday->ndayweek+$poolwindow->weekday;
                     }
 
-                    echo "distance:".$distance."<br>";
+                    //echo "distance:".$distance."<br>";
                     for ($i=0; $i < $distance; $i++) {
                         $actualday=$actualday->getNext();
                     }

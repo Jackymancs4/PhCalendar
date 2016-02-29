@@ -69,11 +69,11 @@
                                         @if($day->hours[$nhour]->quarters[$nquarter]->dayindex==$quarter->getDayindexfromString($poolwindows->start_time))
                                         <td class="pool" rowspan="{{ ($quarter->getDayindexfromString($poolwindows->end_time)-$quarter->getDayindexfromString($poolwindows->start_time)) }}">
                                             <div class="pool-title">
-                                                {{ $poolwindows->poolRelation->name }}
-                                            <div>
+                                                <h4><b>{{ $poolwindows->poolRelation->name }}</b></h4>
+                                            </div>
                                             @if(isset($list[$poolwindows->id.$day->day.$day->month.$day->year]))
                                                 @foreach($list[$poolwindows->id.$day->day.$day->month.$day->year] as $name)
-                                                    {{ $name }}
+                                                    <div>{{ $name }}</div>
                                                 @endforeach
                                             @endif
                                         </td>
