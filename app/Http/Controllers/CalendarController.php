@@ -46,7 +46,7 @@ class CalendarController extends Controller
         $list=array();
 
         foreach($repo->getAllTodos() as $todo) {
-            if($todo->childRelation->count() == 0) {
+            if($todo->childRelation->count() == 0 && $todo->pool!=NULL) {
                 $list[$todo->id]=$todo;
             }
         }
@@ -97,7 +97,7 @@ class CalendarController extends Controller
                     foreach($todolist as $todo) {
 
                         if($todo->pool==$poolwindow->pool && ($dimension-$todo->duration)>0) {
-                            $table[$poolwindow->id.$actualday->day.$actualday->month.$actualday->year][]=$todo->name;
+                            $table[$poolwindow->id.(int)$actualday->day.(int)$actualday->month.(int)$actualday->year][]=$todo->name;
                             unset($todolist[$todo->id]);
                             $lastweekday=$actualday->ndayweek;
                             $dimension-=$todo->duration;
@@ -114,6 +114,8 @@ class CalendarController extends Controller
             $actualday=$actualday->getNext();
            
         }
+
+        //print_r($table);
 
         $WC = new Calendar\WeekClass($year, $month, $day);
         return view("date.weekView", ["week"=> $WC, "prevweek" => $WC->getPrev(), "nextweek" => $WC->getNext(), "list" => $table]);

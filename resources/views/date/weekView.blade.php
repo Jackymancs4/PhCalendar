@@ -71,6 +71,7 @@
                                             <div class="pool-title">
                                                 <h4><b>{{ $poolwindows->poolRelation->name }}</b></h4>
                                             </div>
+
                                             @if(isset($list[$poolwindows->id.$day->day.$day->month.$day->year]))
                                                 @foreach($list[$poolwindows->id.$day->day.$day->month.$day->year] as $name)
                                                     <div>{{ $name }}</div>
